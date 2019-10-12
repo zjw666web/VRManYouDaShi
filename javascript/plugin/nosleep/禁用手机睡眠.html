@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>禁用手机睡眠</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="NoSleep.js"></script>
+</head>
+
+<body>
+
+<input type="button" id="toggle" value="防止手机进入睡眠"/>
+
+<script>
+    var noSleep = new NoSleep();
+    var wakeLockEnabled = false;
+    var toggleEl = document.querySelector("#toggle");
+    toggleEl.addEventListener('click', function () {
+        if (!wakeLockEnabled) {
+            noSleep.enable(); // keep the screen on!
+            wakeLockEnabled = true;
+            toggleEl.value = "手机自动睡眠";
+        } else {
+            noSleep.disable(); // let the screen turn off.
+            wakeLockEnabled = false;
+            toggleEl.value = "防止手机进入睡眠";
+        }
+    }, false);
+</script>
+</body>
+
+</html>
